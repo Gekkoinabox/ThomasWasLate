@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include <sfml/Graphics.hpp>
 #include "TextureHolder.h"
 
 using namespace sf;
@@ -55,7 +55,7 @@ private:
 	//Private functions for internal use
 private:
 	void input();
-	void update();
+	void update(float dtAsSeconds);
 	void draw();
 
 public:

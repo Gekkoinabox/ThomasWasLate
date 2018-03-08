@@ -2,9 +2,16 @@
 //
 
 #include "stdafx.h"
-#include <SFML/Graphics.hpp>
+#include "Engine.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	//Declare an instance of Engine
+	Engine engine;
+
+	//start the engine
+	engine.run();
+
+	//Quit in the usual way once engine is stopped
+	return 0;
 }

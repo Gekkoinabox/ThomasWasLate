@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include <sfml/Graphics.hpp>
 #include <map>
 
 class TextureHolder

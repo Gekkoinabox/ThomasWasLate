@@ -1,24 +1,24 @@
 #include "stdafx.h"
-#include "Thomas.h"
+#include "Bob.h"
 #include "TextureHolder.h"
 
-Thomas::Thomas()
+Bob::Bob()
 {
 
 	//Create our sprite by associating the texture with a sprite
-	m_Sprite = Sprite(TextureHolder::GetTexture("graphics/thomas.png"));
+	m_Sprite = Sprite(TextureHolder::GetTexture("graphics/bob.png"));
 
-	m_JumpDuration = 0.45f;
+	m_JumpDuration = 0.25f;
 
 
 } //End function Thomas
 
-bool Thomas::handleInput()
+bool Bob::handleInput()
 {
 	// Always start assuming not jumping
 	m_JustJumped = false;
 
-	if (Keyboard::isKeyPressed(Keyboard::W))
+	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
 		//Start a jump if not already jumping
 		//But only if standing on a block not falling
@@ -37,8 +37,8 @@ bool Thomas::handleInput()
 		m_IsFalling = true;
 	} //end W not pressed
 
-	//Check left
-	if (Keyboard::isKeyPressed(Keyboard::A))
+	  //Check left
+	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		m_LeftPressed = true;
 	}
@@ -48,7 +48,7 @@ bool Thomas::handleInput()
 	}
 
 	//Check right
-	if (Keyboard::isKeyPressed(Keyboard::D))
+	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		m_RightPressed = true;
 	}

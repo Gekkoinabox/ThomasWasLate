@@ -36,4 +36,16 @@ void Engine::input()
 		} // end if keypressed
 	} // end while loop for event polling
 
+	//Handle inputs spacific to Thomas
+	if (m_Thomas.handleInput())
+	{
+		//TODO: Play jumping sound
+	}
+
+	//Handle inputs spacific to Bob
+	if (m_Bob.handleInput())
+	{
+		//TODO: Play jumping sound
+	}
+
 } // end input()

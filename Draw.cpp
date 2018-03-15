@@ -3,47 +3,50 @@
 
 void Engine::draw()
 {
-	//erase the last frame
+	// Erase the last frame
 	m_Window.clear(Color::White);
 
-	//Single screen
+	// Single screen
 	if (!m_SplitScreen)
 	{
-		//switch to the background view
+		// Switch to the background view
 		m_Window.setView(m_BGMainView);
-		//Draw
+		// Draw the background
 		m_Window.draw(m_BackgroundSprite);
-		//Set Main View
+		// Set main view
 		m_Window.setView(m_MainView);
-		//TODO: Draw all the stuff
-
-	}//end single screen
-	//Splitscreen
+		// TODO: Draw all the stuff
+	} // end single screen
+	// split screen
 	else
 	{
-		//Draw Thomas's side of the screen first
-		//switch to background view first
+		// Draw Thomas' side of the screen
+		// Switch to the background view
 		m_Window.setView(m_BGLeftView);
-		//Switch to the main view for left
+		// Draw background
 		m_Window.draw(m_BackgroundSprite);
-		//Draw the left view
+		// Switch to the main view for left
 		m_Window.setView(m_LeftView);
+		// TODO: Draw all the stuff
 
 
-		//Draw Bob's side of the screen first
-		//switch to background view first
+		// Draw Bob's side of the screen
+		// Switch to the background view
 		m_Window.setView(m_BGRightView);
-		//Switch to the main view for left
+		// Draw background
 		m_Window.draw(m_BackgroundSprite);
-		//Draw the left view
+		// Switch to the main view for right
 		m_Window.setView(m_RightView);
-	}//End splitscreen
+		// TODO: Draw all the stuff
 
-	//Draw Hud
-	//Switch to hud
+	} // end split screen
+
+	// Draw HUD
+	// Switch to hud view
 	m_Window.setView(m_HudView);
-	//TODO: Draw hud
+	// TODO: Draw hud
 
-	//Show everything we have just drawn
+	// Show everything we have just drawn
 	m_Window.display();
-}//End of draw funtion
+
+} // end of draw function

@@ -3,32 +3,32 @@
 
 Engine::Engine()
 {
-	//Get the screen resolution
+	// Get the screen resolution
 	// and create an SFML window and View
 	Vector2f resolution;
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
 	m_Window.create(VideoMode(resolution.x, resolution.y),
-					"Thomas was late",
-					Style::Fullscreen);
+		"Thomas Was Late",
+		Style::Fullscreen);
 
-	//Initialise the fullscreen view
+	// Initialise the fullscreen view
 	m_MainView.setSize(resolution);
 	m_HudView.reset(FloatRect(0, 0, resolution.x, resolution.y));
 
-	//initialise split screen view
-	m_LeftView.setViewport(FloatRect(0.001f, 9.991f, 0.498f, 0.998f));
-	m_RightView.setViewport(FloatRect(0.5f, 9.991f, 0.498f, 0.998f));
+	// Initialise split screen view
+	m_LeftView.setViewport(FloatRect(0.001f, 0.001f, 0.498f, 0.998f));
+	m_RightView.setViewport(FloatRect(0.5f, 0.001f, 0.498f, 0.998f));
 
-	//initialise split screen view
-	m_BGLeftView.setViewport(FloatRect(0.001f, 9.991f, 0.498f, 0.998f));
-	m_BGRightView.setViewport(FloatRect(0.5f, 9.991f, 0.498f, 0.998f));
+	// split screen backgrounds
+	m_BGLeftView.setViewport(FloatRect(0.001f, 0.001f, 0.498f, 0.998f));
+	m_BGRightView.setViewport(FloatRect(0.5f, 0.001f, 0.498f, 0.998f));
 
-	//Get background texture
+	// Get background texture
 	m_BackgroundTexture = TextureHolder::GetTexture("graphics/background.png");
 
-	//Associate the sprite with the texture
+	// Associate the sprite with the texture
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 }
 
@@ -39,15 +39,15 @@ void Engine::run()
 	while (m_Window.isOpen())
 	{
 		Time dt = clock.restart();
-		//update the total game time
+		// Update the total game time
 		m_GameTimeTotal += dt;
 
-		//make a decimal fraction from the delta time
+		// Make a decimal fraction from the delta time;
 		float dtAsSeconds = dt.asSeconds();
 
-		//call each part of the game loop in turn
-		//input();
-		//update(dtAsSeconds);
-		//draw();
+		// Call each part of the game loop in turn
+		input();
+		update(dtAsSeconds);
+		draw();
 	}
 }

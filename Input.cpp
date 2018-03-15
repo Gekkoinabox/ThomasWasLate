@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include  "Engine.h"
+#include "Engine.h"
 
 void Engine::input()
 {
@@ -8,30 +8,32 @@ void Engine::input()
 	{
 		if (event.type == Event::KeyPressed)
 		{
-			//Handle the player quitting
+			// handle the player quitting
 			if (Keyboard::isKeyPressed(Keyboard::Escape))
 			{
 				m_Window.close();
 			}
 
-			//Handle the player starting the game
+			// Handle the player starting the game
 			if (Keyboard::isKeyPressed(Keyboard::Return))
 			{
-				m_Playing == true;
+				m_Playing = true;
 			}
 
-			//Switch between Thomas and Bob camera focus
+			// Switch between Thomas and Bob camera focus
 			if (Keyboard::isKeyPressed(Keyboard::Q))
 			{
+				// m_isCharacter1CameraFocus
 				m_Character1 = !m_Character1;
 			}
 
-			//Switch between full and split screen
+			// Switch between full and split screen
 			if (Keyboard::isKeyPressed(Keyboard::E))
 			{
 				m_SplitScreen = !m_SplitScreen;
 			}
-		}
-	} //End while for event polling
 
-} //End input
+		} // end if keypressed
+	} // end while loop for event polling
+
+} // end input()

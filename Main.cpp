@@ -1,4 +1,4 @@
-// ThomasWasLate.cpp : Defines the entry point for the console application.
+// FifeCollege-ThomasWasLate.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -6,12 +6,13 @@
 
 int main()
 {
-	//Declare an instance of Engine
+	// Declare an instance of Engine
 	Engine engine;
 
-	//start the engine
+	// Start the engine
 	engine.run();
 
-	//Quit in the usual way once engine is stopped
+	// Quit in the usual way once engine is stopped
 	return 0;
 }
+

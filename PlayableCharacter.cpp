@@ -3,88 +3,87 @@
 
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
-	//Place the player at the starting point
+	// Place the player at the starting point
 	m_Position.x = startPosition.x;
 	m_Position.y = startPosition.y;
 
-	//Initialize the gravity
+	// Initialize the gravity
 	m_Gravity = gravity;
 
-	//move the sprite to the position
+	// Move the sprite to the position
 	m_Sprite.setPosition(m_Position);
 
-} //end spawn()
+} // end spawn()
 
-void PlayableCharacter::update(float elapsedTime) // elapsedTime is in fractions of a second
+void PlayableCharacter::update(float elapsedTime) // in fractions of a second
 {
-	//check if we should be moving left or right
+	// check if we should be moving left or right
 	if (m_RightPressed)
 	{
-		m_Position.x += m_Speed * elapsedTime; //speed is in pixels per second
+		m_Position.x += m_Speed * elapsedTime;
 	}
-
 	if (m_LeftPressed)
 	{
-		m_Position.x -= m_Speed * elapsedTime; //speed is in pixels per second
+		m_Position.x -= m_Speed * elapsedTime;
 	}
 
-	//Handle jumping
+	// Handle jumping
 	if (m_IsJumping)
 	{
-		//Update how long the jump has been going
+		// Update how long the jump has been going
 		m_TimeThisJump += elapsedTime;
 
-		//if we are still jumping upwards...
+		// If we are still jumping upwards...
 		if (m_TimeThisJump < m_JumpDuration)
 		{
-			//Move up at twice the speed of gravity
+			// Move up at twice the speed of gravity
 			m_Position.y -= m_Gravity * 2 * elapsedTime;
 		}
-		//if jump duration has ended...
+		// If jump duration has ended...
 		else
 		{
 			m_IsJumping = false;
 			m_IsFalling = true;
 		}
-	}//end if(jumping)
+	} // end if(m_isJumping)
 
-	//Apply gravity
+	// Apply gravity
 	if (m_IsFalling)
 	{
-		m_Position.y += m_Gravity * elapsedTime; //constant velocity and not an accelerationw which is NOT REALISTIC YOU ARE BREAKING MY IMMERSION REEEEEEE
+		m_Position.y += m_Gravity * elapsedTime;
 	}
 
-	//Update rectposition for all body parts
+	// Update rect position for all body parts
 	FloatRect r = getPosition();
 
-	//Feet
+	// Feet
 	m_Feet.left = r.left + 3;
 	m_Feet.top = r.top + r.height - 1;
 	m_Feet.width = r.width - 6;
 	m_Feet.height = 1;
 
-	//Head
+	// Head
 	m_Head.left = r.left;
 	m_Head.top = r.top + (r.height * 0.3f);
 	m_Head.width = r.width;
 	m_Head.height = 1;
 
-	//Right
+	// Right
 	m_Right.left = r.left + r.width - 2;
 	m_Right.top = r.top + r.height * 0.35;
 	m_Right.width = 1;
 	m_Right.height = r.height * 0.3;
 
-	//Left
+	// Left
 	m_Left.left = r.left;
 	m_Left.top = r.top + r.height * 0.35;
 	m_Left.width = 1;
 	m_Left.height = r.height * 0.3;
 
-	//move the sprite into position
+	// Move the sprite into position
 	m_Sprite.setPosition(m_Position);
 
-}//end update
+} // end update()
 
 FloatRect PlayableCharacter::getPosition()
 {
@@ -95,7 +94,7 @@ Vector2f PlayableCharacter::getCenter()
 {
 	return Vector2f(
 		m_Position.x + m_Sprite.getGlobalBounds().width / 2,
-		m_Position.y = m_Sprite.getGlobalBounds().height / 2
+		m_Position.y + m_Sprite.getGlobalBounds().height / 2
 		);
 }
 
@@ -118,7 +117,6 @@ FloatRect PlayableCharacter::getRight()
 {
 	return m_Right;
 }
-
 
 Sprite PlayableCharacter::getSprite()
 {

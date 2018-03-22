@@ -3,6 +3,7 @@
 #include "TextureHolder.h"
 #include "Thomas.h"
 #include "Bob.h"
+#include "LevelManager.h"
 
 using namespace sf;
 // SARAH NOTE: Don't use "using" in .h files! bad!
@@ -17,6 +18,9 @@ private:
 	//Our playable characters, thomas and his friend bob
 	Thomas m_Thomas;
 	Bob m_Bob;
+
+	//A class to manage the levels
+	LevelManager m_LM;
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
@@ -58,11 +62,22 @@ private:
 	// Is it time for a new/first level?
 	bool m_NewLevelRequired = true;
 
+	// The vertex array for the level tiles
+	VertexArray m_VALevel;
+	//The 2D array with the map for the level (data) (0-3)
+	//a pointer to a point (aka 2D Array)
+	int** m_ArrayLevel = NULL;
+	//texture for the level tiles
+	Texture m_TextureTiles;
+
 	// Private functions for internal use
 private:
 	void input();
 	void update(float dtAsSeconds);
 	void draw();
+
+	//load a new level
+	void loadLevel();
 
 public:
 	// Constructor

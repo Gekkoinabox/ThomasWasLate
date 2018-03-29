@@ -62,10 +62,12 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 					if (m_ArrayLevel[y][x] == 2) //FIRE
 					{
 						//TODO: Play sound
+						m_SM.playFallInFire();
 					}
 					else //Water
 					{
 						//TODO: Play sound
+						m_SM.playFallInWater();
 					}
 				}//Ebd block collision test with fire/water
 			}//end water or lava test

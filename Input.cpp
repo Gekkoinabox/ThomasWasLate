@@ -46,6 +46,7 @@ void Engine::input()
 	if (m_Bob.handleInput())
 	{
 		//TODO: Play jumping sound
+		m_SM.playJump();
 	}
 
 } // end input()
